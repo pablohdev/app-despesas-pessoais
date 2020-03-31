@@ -12,7 +12,22 @@ final List<Transaction> transactions;
   Widget build(BuildContext context) {
 	return Container(
 	  height: 300,
-	  child: ListView.builder(
+	  child: transactions.isEmpty ? Column(
+		  children: <Widget>[
+			  Text(
+				  'Nenhuma Transação Cadastrada',
+				  style: Theme.of(context).textTheme.title
+				  ),
+				  SizedBox(height:20),
+				  Container(
+					  height:200,
+					  child: Image.asset(
+						'assets/images/waiting.png',
+						fit:BoxFit.cover,
+					)
+				  )
+		  ],
+	  ): ListView.builder(
 		  itemCount: transactions.length,
 		  itemBuilder: (ctx,index){
 			final tr = transactions[index];
